@@ -1,6 +1,7 @@
 .classpath
 .project
 .settings/
+.log
 
 target/
 pom.xml.tag

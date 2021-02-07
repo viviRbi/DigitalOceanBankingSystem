@@ -34,7 +34,7 @@ public class UserService {
 	
 	// Get a bank account using Rounting number
 	public void getBankAccountByRountingNumber(int someone_rounting_number) {
-		BankAccount b = u.getBankAccountByRountingNumber(someone_rounting_number);
+		BankAccount b = u.getBankAccountByRountingNumber(someone_rounting_number, "bank_account");
 		System.out.println("\u001B[34mThis account balance is " + b.getBalance() + "\u001B[0m");
 	}
 

@@ -88,13 +88,6 @@ public class UserDaoImpl implements UserDao{
 		}
 		return this.u;
 	}
-	
-	// register
-
-	@Override
-	public void registerAsCustomer() {
-		
-	}
 
 	@Override
 	// Deposit is from real money transfer to bank account. So the transfered bank account is the user bank
@@ -102,7 +95,7 @@ public class UserDaoImpl implements UserDao{
 		boolean deposited = false;
 		boolean bankAccountExists = checkIfBankAccountExist(getAllBankAccountByCustomerId (transfered_account_number), transfered_bank_rounting);
 		if (bankAccountExists == true) {
-			BankAccount account = this.getBankAccountByRountingNumber(transfered_bank_rounting);
+			BankAccount account = this.getBankAccountByRountingNumber(transfered_bank_rounting, "bank_account");
 			double account_balance =account.getBalance();
 			if (account_balance < 0) {
 				System.out.println("\u001B[31m---------------------------------------");
@@ -143,7 +136,7 @@ public class UserDaoImpl implements UserDao{
 		boolean withdraw = false;
 		boolean bankAccountExists = checkIfBankAccountExist(getAllBankAccountByCustomerId (transfer_account_number), transfer_bank_rounting);
 		if (bankAccountExists) {
-			BankAccount account = this.getBankAccountByRountingNumber(transfer_bank_rounting);
+			BankAccount account = this.getBankAccountByRountingNumber(transfer_bank_rounting, "bank_account");
 			double account_balance =account.getBalance();
 			if (amount > account.getBalance()) {
 				System.out.println("\u001B[31m---------------------------------------");
@@ -197,7 +190,7 @@ public class UserDaoImpl implements UserDao{
 				System.out.println("You cannot transfer money to your same bank account");	
 				System.out.println("---------------------------------------------------\u001B[0m");
 			}else {
-				BankAccount account = this.getBankAccountByRountingNumber(transfer_bank_rounting);
+				BankAccount account = this.getBankAccountByRountingNumber(transfer_bank_rounting, "bank_account");
 				double account_balance =account.getBalance();
 
 				if (amount > account_balance) {
@@ -268,10 +261,10 @@ public class UserDaoImpl implements UserDao{
 	
 	
 	@Override
-	public BankAccount getBankAccountByRountingNumber(int rounting_number) {
+	public BankAccount getBankAccountByRountingNumber(int rounting_number,String table) {
 		BankAccount account = null;
 		try (Connection connection = ConnectionUtil.getConnection()){
-			String sql = "SELECT * FROM bank_account WHERE rounting_number = ?";
+			String sql = "SELECT * FROM "+table+" WHERE rounting_number = ?";
 			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1,rounting_number);
 			ResultSet rs = pstmt.executeQuery();

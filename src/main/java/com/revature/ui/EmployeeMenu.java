@@ -44,10 +44,47 @@ public class EmployeeMenu implements Menu{
 			switch (choice) {
 				//As an employee, I can approve or reject an account - 2 points
 				case 1:
-					
+					e.viewAllPendingBankAccounts();
 					break;
 				case 2:
-					
+					String input = "";
+					System.out.println("----------------------");
+					System.out.println("Please choose 1 to Approve, 2 to Reject (remove) this pending account and type 'quit' to quit the operation");	
+					input = Menu.sc.nextLine();
+					switch (input) {
+					case "1":
+						String rountingApprove = "";
+						if (rountingApprove != "quit"){
+							System.out.println("Please type the rounting number of the account you wish to approve");	
+							rountingApprove = Menu.sc.nextLine();
+							switch(rountingApprove){
+							case "quit":
+								System.out.println("\n");	
+								break;
+							default:
+								e.approveBankAccount(Integer.parseInt(rountingApprove ));
+							}
+						} 
+						break;
+					case "2":
+						String rountingReject = "";
+						if (rountingReject != "quit"){
+							System.out.println("Please type the rounting number of the account you wish to approve");	
+							rountingReject = Menu.sc.nextLine();
+							switch(rountingReject){
+							case "quit":
+								System.out.println("\n");	
+								break;
+							default:
+								e.rejectBankAccount(Integer.parseInt(rountingReject));
+							}
+						}
+						break;
+					case "quit": case "Quit": case "QUIT":
+						break;
+					default:
+						System.out.println("\033[31;1m Cannot unsetand your input, please type 1, 2, or quit \033[0m");
+					}
 					break;
 				// End ------------------------
 				// As an employee, I can view a customer's bank accounts - 1 point
