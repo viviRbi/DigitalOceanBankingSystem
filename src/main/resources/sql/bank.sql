@@ -203,7 +203,10 @@ execute procedure account_balance_change();
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------INSERT transaction DATA
 insert into transaction(transfer_amount, transaction_name_id, transfer_customer_id, transfered_customer_id, transfer_bank_rounting, transfered_bank_rounting) 
-values (100.00,1, null,1,null,1);
+values (100.00,1, 2,1,2,1);
+
+insert into pending_transaction(transfer_amount, transaction_name_id, transfer_customer_id, transfered_customer_id, transfer_bank_rounting, transfered_bank_rounting) 
+values (50.00,1, 2,1,2,1);
 ;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -220,11 +223,18 @@ select * from pending_transaction;
 --insert into bank_account(rounting_number, account_number,balance) values (4,2,5000);
 
 SELECT 'Customer' AS role, username, password
-FROM customer 
+FROM postgres.public.customer 
 WHERE username='Thanh' AND password = 'Le'
 UNION
 SELECT 'Employee', username,password
 from employee
 WHERE username='Thanh' AND password = 'Le';	
 
-select * from bank_account;
+SELECT * FROM pending_transaction WHERE transfered_customer_id = 1;
+
+
+--select t.table_name
+--from information_schema.tables t
+--where 1 = 1  -- put schema name here
+--      and t.table_type = 'BASE TABLE'
+--order by t.table_name;

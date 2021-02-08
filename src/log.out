@@ -14,3 +14,8 @@
 {INFO} Feb-06-2021 Saturday CST 15:17:26   Customer with Rounting number 1 and account number 1 had deposit 20.0  [com.revature.dao.UserDaoImpl]  
 {INFO} Feb-06-2021 Saturday CST 15:40:58   Customer with Rounting number 1 and account number 1 had withdraw 100.0  [com.revature.dao.UserDaoImpl]  
 {INFO} Feb-06-2021 Saturday CST 15:43:04   Customer with Rounting number 1 and account number 1 had withdraw 100.0  [com.revature.dao.UserDaoImpl]  
+{INFO} Feb-07-2021 Sunday CST 16:59:36   Bank account with Rounting number 1 and account number 1 make a pending transfer 100.0 to the account with rounting number of 3 and account number of 2  [com.revature.dao.UserDaoImpl]  
+{INFO} Feb-07-2021 Sunday CST 22:27:59   Bank account with Rounting number 2 and account number 2 make a pending transfer 50.0 to the account with rounting number of 1 and account number of 1  [com.revature.dao.UserDaoImpl]  
+{INFO} Feb-07-2021 Sunday CST 23:01:27   Customer with Rounting number 2 and account number 1 had accept a transfer of50.0 from other account with account number of 1 and rounting number of 1  [com.revature.dao.UserDaoImpl]  
+{INFO} Feb-07-2021 Sunday CST 23:04:35   Customer with Rounting number 2 and account number 1 had accept a transfer of50.0 from other account with account number of 1 and rounting number of 1  [com.revature.dao.UserDaoImpl]  
+{INFO} Feb-07-2021 Sunday CST 23:11:11   Customer with Rounting number 2 and account number 1 had accept a transfer of50.0 from other account with account number of 1 and rounting number of 1  [com.revature.dao.UserDaoImpl]  

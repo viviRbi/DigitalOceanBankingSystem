@@ -9,7 +9,25 @@ public class Customer extends User{
 	private String address;
 	private String zipcode;
 	private String modifiedDate;
+	private String state;
+	private String phone;
 	
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	public Customer() {super();}
 
 	public Customer(int id, String username, String password, String birthday, String address, String zipcode, String modifiedDate) {

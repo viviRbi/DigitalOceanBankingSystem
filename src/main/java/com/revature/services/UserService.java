@@ -4,6 +4,7 @@ import com.revature.dao.UserDao;
 import com.revature.dao.UserDaoImpl;
 import com.revature.exceptions.NotEnoughBalanceException;
 import com.revature.models.BankAccount;
+import com.revature.models.Customer;
 import com.revature.models.User;
 
 // Customer and employee can all use these method
@@ -22,7 +23,6 @@ public class UserService {
 	
 	// This function is in UserService because when build up, Employees should be able to do these transaction as well
 	public void depositTransferWithdraw(int transfer_bank_rounting, int transfer_account_number,int transfered_bank_rounting, int transfered_account_number, double amount) {
-		
 		if(transfer_bank_rounting == 0 && transfer_account_number == 0) {
 			u.deposit(transfered_bank_rounting, transfered_account_number, amount);
 		} else if (transfered_bank_rounting == 0 && transfered_account_number == 0) {
@@ -37,5 +37,9 @@ public class UserService {
 		BankAccount b = u.getBankAccountByRountingNumber(someone_rounting_number, "bank_account");
 		System.out.println("\u001B[34mThis account balance is " + b.getBalance() + "\u001B[0m");
 	}
-
+	
+	public Customer getCustomerInfoByAccountNumber(int id) {
+		Customer c = u.getCustomerInfoByAccountNumber(id);
+		return c;
+	}
 }

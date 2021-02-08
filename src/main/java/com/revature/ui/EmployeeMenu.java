@@ -108,7 +108,7 @@ public class EmployeeMenu implements Menu{
 					System.out.println("No valid choice entered, please try again");
 			}
 			
-		} while (choice != 7);
+		} while (choice != 5);
 	}
 
 }

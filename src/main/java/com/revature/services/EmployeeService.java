@@ -16,7 +16,7 @@ import com.revature.dao.UserDao;
 import com.revature.dao.UserDaoImpl;
 import com.revature.models.BankAccount;
 
-public class EmployeeService {
+public class EmployeeService extends UserService{
 	private UserDao u = new UserDaoImpl();
 	private EmployeeDao e = new EmployeeDaoImpl();
 	

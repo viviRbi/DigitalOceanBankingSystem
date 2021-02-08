@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao{
 	Connection connection = null;
 	
 	private User u;
-	private static Logger log=Logger.getLogger(UserDaoImpl.class);
+	static Logger log=Logger.getLogger(UserDaoImpl.class);
 
 	public UserDaoImpl() {
 		super();
@@ -317,5 +317,34 @@ public class UserDaoImpl implements UserDao{
 		}
 		return exists;
 	}
+
+	@Override
+	public Customer getCustomerInfoByAccountNumber(int id) {
+		Customer c = null;
+		try (Connection connection = ConnectionUtil.getConnection()){
+			String sql = "SELECT * FROM customer WHERE id = ?";
+			PreparedStatement pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1,id);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				c= new Customer();
+				c.setId(id);
+				c.setUsername(rs.getString("username"));
+				c.setPassword(rs.getString("password"));
+				c.setAddress(rs.getString("address"));
+				c.setBirthday(rs.getString("birthday"));
+				c.setModifiedDate(rs.getString("modified_date"));
+				c.setZipcode(rs.getString("zipcode"));
+				c.setState(rs.getString("state"));
+				c.setPhone(rs.getString("phone"));
+			}
+		}catch (DatabaseConnectivityException | SQLException e){
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+			System.out.println(e.getStackTrace());
+		}
+		return c;
+	}
+	
 	
 }

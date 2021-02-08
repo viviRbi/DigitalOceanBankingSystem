@@ -1,7 +1,10 @@
 package com.revature.ui;
 
+import java.util.List;
+
 import com.revature.models.Customer;
 import com.revature.models.User;
+import com.revature.models.Transaction;
 import com.revature.services.CustomerService;
 import com.revature.services.UserService;
 
@@ -22,14 +25,52 @@ public class CustomerMenu implements Menu{
 	@Override
 	public void display() {
 		int choice = 0;
+		System.out.println("===========");
+		System.out.println("Hi "+ user.getUsername() + ", Welcome to the Customer Menu");
+		System.out.println("===========");
+		//accept a money transfer from another account - 2 points (auto accept if same customer, different bank account)
+		List<Transaction> transactions = c.getTransferTransaction(user.getId());
+		if (transactions != null && transactions.size() > 0) { 
+			System.out.println("\u001B[35m You got money! \u001B[0m");
+			for (int i = 0; i < transactions.size(); i++) {
+				Customer customer = c.getCustomerInfoByAccountNumber(transactions.get(i).getTransfer_customer_id());
+				System.out.println(" -- \u001B[34m Pending Transaction id:\u001B[0m \u001B[31m 1 \u001B[0m -- ");
+				System.out.println("\u001B[34m User "+customer.getUsername()+" transfer " + transactions.get(i).getTransfer_amount() + " amount of money to you \u001B[0m ");
+			}
+			
+			int newChoice = 0;
+			do {
+				System.out.println("Please choose");
+				System.out.println("1 to accept the chosen transaction");
+				System.out.println("2 to reject the chosen transaction ");
+				System.out.println("3 to go Back ");
+				System.out.println("----------------------------------------------------");
+				newChoice = Integer.parseInt(Menu.sc.nextLine());
+				switch (newChoice) {
+					case 1:
+						System.out.println("Please type the transaction id of transaction you want to accept");
+						int acceptId = Integer.parseInt(Menu.sc.nextLine());
+						c.acceptTransaction(acceptId);
+						break;
+					case 2:
+						System.out.println("Please type the transaction id of transaction you want to reject");
+						int rejectId = Integer.parseInt(Menu.sc.nextLine());
+						break;
+					case 3:
+						break;
+					default:
+						System.out.println("\u001B[31m Please choose 1, 2, or 3 only\u001B[0m");
+				}
+			} while (newChoice != 3);
+		}
+		// get transfered_customer_id in pending_transaction table by customer id
+		// get a list transfered routing, transfered username, amount. Tell user they have some money transfer from username to their bank with id of .. with the amount of ..
+		// ask if they want 1.accept  2.reject 3.Back
+		
 		do {
-			System.out.println("===========");
-			System.out.println("Hi "+ user.getUsername() + ", Welcome to the Customer Menu");
-			System.out.println("===========");
 			System.out.println("Please press:");
 			
 			System.out.println("1 Apply for a new bank account");
-			//accept a money transfer from another account - 2 points (auto accept if same customer, different bank account)
 			System.out.println("2 Deposit, Withdraw, or Transfer Money");
 			System.out.println("3 View balance of an account using rounting number");
 			System.out.println("4 Log out");
