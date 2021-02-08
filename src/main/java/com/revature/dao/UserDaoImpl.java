@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao{
 	Connection connection = null;
 	
 	private User u;
-	static Logger log=Logger.getLogger(UserDaoImpl.class);
+	public static Logger log=Logger.getLogger(UserDaoImpl.class);
 
 	public UserDaoImpl() {
 		super();

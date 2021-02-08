@@ -55,6 +55,7 @@ public class CustomerMenu implements Menu{
 					case 2:
 						System.out.println("Please type the transaction id of transaction you want to reject");
 						int rejectId = Integer.parseInt(Menu.sc.nextLine());
+						c.rejectTransaction(rejectId);
 						break;
 					case 3:
 						break;

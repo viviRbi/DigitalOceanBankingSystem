@@ -19,3 +19,4 @@
 {INFO} Feb-07-2021 Sunday CST 23:01:27   Customer with Rounting number 2 and account number 1 had accept a transfer of50.0 from other account with account number of 1 and rounting number of 1  [com.revature.dao.UserDaoImpl]  
 {INFO} Feb-07-2021 Sunday CST 23:04:35   Customer with Rounting number 2 and account number 1 had accept a transfer of50.0 from other account with account number of 1 and rounting number of 1  [com.revature.dao.UserDaoImpl]  
 {INFO} Feb-07-2021 Sunday CST 23:11:11   Customer with Rounting number 2 and account number 1 had accept a transfer of50.0 from other account with account number of 1 and rounting number of 1  [com.revature.dao.UserDaoImpl]  
+{INFO} Feb-08-2021 Monday CST 10:56:36   Pending Transaction Cancel. Customer with Rounting number 2 and account number 2 had REJECT a transfer of 50.0 from other account with account number of 2 and rounting number of 2  [com.revature.dao.UserDaoImpl]  

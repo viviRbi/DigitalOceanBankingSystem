@@ -24,7 +24,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	public boolean applyNewAccount(int account_number, double balance) {
 		boolean inserted = false;
 		try (Connection connection = ConnectionUtil.getConnection()){
-			String sql = "INSERT INTO applied_bank_account(account_number,balance) values (?,?)";
+			String sql = "INSERT INTO applied_bank_account(account_number,balance) VAALUES (?,?)";
 			
 			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, account_number);
@@ -32,8 +32,6 @@ public class CustomerDaoImpl implements CustomerDao {
 			
 			if (pstmt.executeUpdate() != 0)
 				inserted = true;
-			else
-				inserted = false;
 			
 		}catch (DatabaseConnectivityException | SQLException e) {
 			e.getMessage();
@@ -125,8 +123,8 @@ public class CustomerDaoImpl implements CustomerDao {
 				if (pstmt.executeUpdate() != 0) {
 					accepted = true;
 					System.out.println("\u001B[34m"+amount + " had been sucessfully transfered to your account. Please check your account using a rounting number to make sure.\u001B[0m");
-					UserDaoImpl.log.info("Customer with Rounting number "+ transfer_bank_rounting + " and account number "+ transfered_customer_id + 
-					 " had accept a transfer of"+ amount + " from other account with account number of "+ transfered_bank_rounting +" and rounting number of "+ transfered_bank_rounting );
+					UserDaoImpl.log.info("Pending Transaction Approved. Customer with Rounting number "+ transfer_bank_rounting + " and account number "+ transfered_customer_id + 
+					 " had ACCEPT a transfer of "+ amount + " from other account with account number of "+ transfered_bank_rounting +" and rounting number of "+ transfered_bank_rounting );
 				} 
 			} else System.out.println("\u001B[31mCannot find pending transaction id. Please check again \u001B[0m");
 		} catch (DatabaseConnectivityException | SQLException e) {
@@ -137,7 +135,29 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Override
 	public boolean rejectTransaction(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean deleted = false;
+		try (Connection connection = ConnectionUtil.getConnection()){
+			String sql = "DELETE FROM pending_transaction WHERE id= ? RETURNING transfer_amount, transfer_customer_id, transfer_bank_rounting, transfered_customer_id, transfered_bank_rounting";
+			PreparedStatement pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				deleted = true;
+				double amount = rs.getDouble("transfer_amount");
+				int transfer_customer_id = rs.getInt("transfer_customer_id");
+				int transfer_bank_rounting = rs.getInt("transfer_bank_rounting");
+				int transfered_customer_id = rs.getInt("transfer_customer_id");
+				int transfered_bank_rounting = rs.getInt("transfer_bank_rounting");
+				UserDaoImpl.log.info("Pending Transaction Cancel. Customer with Rounting number "+ transfer_bank_rounting + " and account number "+ transfered_customer_id 
+						+ " had REJECT a transfer of "+ amount + " from other account with account number of "+ transfered_bank_rounting +" and rounting number of "+ transfered_bank_rounting );
+			}else {
+				System.out.println("\n \u001B[31m There is a problem saving your data to the database \u001B[0m ");
+			}
+				
+		} catch (DatabaseConnectivityException | SQLException e) {
+			e.getMessage();
+		}
+		return deleted;
 	}
 }

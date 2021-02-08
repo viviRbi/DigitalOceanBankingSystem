@@ -230,7 +230,7 @@ SELECT 'Employee', username,password
 from employee
 WHERE username='Thanh' AND password = 'Le';	
 
-SELECT * FROM pending_transaction WHERE transfered_customer_id = 1;
+--Delete FROM pending_transaction WHERE transfered_customer_id = 2;
 
 
 --select t.table_name

@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.revature.dao.CustomerDao;
 import com.revature.dao.CustomerDaoImpl;
+import com.revature.dao.UserDaoImpl;
 import com.revature.models.Transaction;
 
 
@@ -56,8 +57,10 @@ public class CustomerService extends UserService{
 		
 	}
 	
-	public boolean rejectTransaction(int id) {
-		return false;
-		
+	public void rejectTransaction(int id) {
+		boolean deleted = c.rejectTransaction(id);
+		if (deleted == true) {
+			System.out.println("\u001B[34m You have refuse. The transaction is cancel \u001B[0m \n");
+		} else System.out.println("\u001B[31m Cannot cancel this pending transaction \u001B[0m \n");
 	}
 }
