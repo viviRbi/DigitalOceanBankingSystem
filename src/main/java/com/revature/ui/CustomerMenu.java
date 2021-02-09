@@ -34,7 +34,7 @@ public class CustomerMenu implements Menu{
 			System.out.println("\u001B[35m You got money! \u001B[0m");
 			for (int i = 0; i < transactions.size(); i++) {
 				Customer customer = c.getCustomerInfoByAccountNumber(transactions.get(i).getTransfer_customer_id());
-				System.out.println(" -- \u001B[34m Pending Transaction id:\u001B[0m \u001B[31m 1 \u001B[0m -- ");
+				System.out.println(" -- \u001B[34m Pending Transaction id:\u001B[0m \u001B[31m "+transactions.get(i).getId()+" \u001B[0m -- ");
 				System.out.println("\u001B[34m User "+customer.getUsername()+" transfer " + transactions.get(i).getTransfer_amount() + " amount of money to you \u001B[0m ");
 			}
 			

@@ -2,7 +2,6 @@ package com.revature.services;
 
 import com.revature.dao.UserDao;
 import com.revature.dao.UserDaoImpl;
-import com.revature.exceptions.NotEnoughBalanceException;
 import com.revature.models.BankAccount;
 import com.revature.models.Customer;
 import com.revature.models.User;

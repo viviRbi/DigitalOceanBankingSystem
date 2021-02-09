@@ -10,7 +10,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.revature.exceptions.DatabaseConnectivityException;
-import com.revature.exceptions.NotEnoughBalanceException;
 import com.revature.main.Application;
 import com.revature.models.BankAccount;
 import com.revature.models.Customer;
@@ -97,11 +96,11 @@ public class UserDaoImpl implements UserDao{
 		if (bankAccountExists == true) {
 			BankAccount account = this.getBankAccountByRountingNumber(transfered_bank_rounting, "bank_account");
 			double account_balance =account.getBalance();
-			if (account_balance < 0) {
+			if (amount < 0) {
 				System.out.println("\u001B[31m---------------------------------------");
 				System.out.println("Invalid transaction");
 				System.out.println("You cannot deposit a negative amount");
-				System.out.println("---------------------------------------\\u001B[0m");
+				System.out.println("---------------------------------------\u001B[0m");
 			} else {
 				try (Connection connection = ConnectionUtil.getConnection()){
 					String sql = "INSERT INTO transaction (transfer_amount, transaction_name_id, transfer_customer_id, transfered_customer_id, transfer_bank_rounting, transfered_bank_rounting) VALUES (?,?,NULL,?,NULL,?)";

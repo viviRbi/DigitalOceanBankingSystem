@@ -24,7 +24,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	public boolean applyNewAccount(int account_number, double balance) {
 		boolean inserted = false;
 		try (Connection connection = ConnectionUtil.getConnection()){
-			String sql = "INSERT INTO applied_bank_account(account_number,balance) VAALUES (?,?)";
+			String sql = "INSERT INTO applied_bank_account(account_number,balance) VALUES (?,?)";
 			
 			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, account_number);
@@ -126,7 +126,7 @@ public class CustomerDaoImpl implements CustomerDao {
 					UserDaoImpl.log.info("Pending Transaction Approved. Customer with Rounting number "+ transfer_bank_rounting + " and account number "+ transfered_customer_id + 
 					 " had ACCEPT a transfer of "+ amount + " from other account with account number of "+ transfered_bank_rounting +" and rounting number of "+ transfered_bank_rounting );
 				} 
-			} else System.out.println("\u001B[31mCannot find pending transaction id. Please check again \u001B[0m");
+			} else System.out.println("\u001B[31Wrong transaction Id. Please check again \u001B[0m");
 		} catch (DatabaseConnectivityException | SQLException e) {
 			e.getMessage();
 		}

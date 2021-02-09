@@ -48,6 +48,7 @@ public class MainMenu implements Menu{
 					// Check if the user object belong to Employee or Customer class or null
 					if (user instanceof Customer) {
 						Menu customerMenu = new CustomerMenu();
+						// Send user obj to CustomerMenu then downcast it to Customer there
 						customerMenu.setUser(user);
 						customerMenu.display();
 					}else if (user instanceof Employee) {

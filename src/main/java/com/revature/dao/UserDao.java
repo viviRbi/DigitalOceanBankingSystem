@@ -2,7 +2,6 @@ package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.exceptions.NotEnoughBalanceException;
 import com.revature.models.BankAccount;
 import com.revature.models.Customer;
 import com.revature.models.User;

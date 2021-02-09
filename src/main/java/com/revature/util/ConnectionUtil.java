@@ -27,7 +27,7 @@ public class ConnectionUtil {
 			String password = System.getenv("db_password");
 			
 			connection = DriverManager.getConnection(url, username, password);
-//			connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "Thaovy95*");
+			
 		} catch (SQLException e){
 			throw new DatabaseConnectivityException("An issue occurred when trying to connect to the database");
 		} 

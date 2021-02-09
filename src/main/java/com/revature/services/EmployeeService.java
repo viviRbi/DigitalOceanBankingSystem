@@ -101,6 +101,6 @@ public class EmployeeService extends UserService{
 		boolean deleted = e.rejectBankAccount(rounting_number);
 		if (deleted == true) {
 			System.out.println("\u001B[34m Bank account with the id of "+rounting_number+" had been delete from the database \u001B[0m ");
-		} else System.out.println("\u001B[34m Cannot delete bank account with the id of "+rounting_number+" from the database \u001B[0m ");
+		} else System.out.println("\u001B[31m Cannot find bank account with the id of "+rounting_number+" from the database \u001B[0m ");
 	}
 }

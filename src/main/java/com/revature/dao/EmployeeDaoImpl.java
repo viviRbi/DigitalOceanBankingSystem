@@ -32,13 +32,12 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	
 	// delete bank account
 	public boolean rejectBankAccount(int rounting_number) {
-		boolean deleted = true;
+		boolean deleted = false;
 		try (Connection connection = ConnectionUtil.getConnection()){
 			String sql = "DELETE FROM applied_bank_account WHERE rounting_number = ?";
 			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, rounting_number);
 			if (pstmt.executeUpdate() != 0) deleted = true; 
-			else System.out.println("\u001B[31m BCannot delete this pending account in the database \u001B[0m ");
 		} catch (DatabaseConnectivityException | SQLException e) {
 			System.out.println(e.getMessage());
 		}
