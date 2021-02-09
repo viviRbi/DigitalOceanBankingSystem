@@ -54,12 +54,11 @@ public class RegisterMenu implements Menu{
 			
 			System.out.println("Your starting balance");
 			Double balance = Double.parseDouble(Menu.sc.nextLine());
-			
-			if (validateErr != "") {
+
+			if (validateErr.trim() == "") {
 				System.out.println(validateErr);
 			} else {
 				LocalDate birthday=LocalDate.parse(birth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-				
 				System.out.println("\u001B[34m Saving your infomation to our database... \u001B[0m");
 				choice = c.registerNewAccount(username, pass, (java.sql.Date) Date.valueOf(birthday), phone, addr, zip, state, balance);
 			}

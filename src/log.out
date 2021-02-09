@@ -24,3 +24,5 @@
 {INFO} Feb-09-2021 Tuesday CST 00:49:38   Customer with Rounting number 5 and account number 1 had withdraw 100.0  [com.revature.dao.UserDaoImpl]  
 {INFO} Feb-09-2021 Tuesday CST 00:50:07   Bank account with Rounting number 5 and account number 1 make a pending transfer 100.0 to the account with rounting number of 2 and account number of 2  [com.revature.dao.UserDaoImpl]  
 {INFO} Feb-09-2021 Tuesday CST 01:04:46   Pending Transaction Approved. Customer with Rounting number 5 and account number 2 had ACCEPT a transfer of 100.0 from other account with account number of 2 and rounting number of 2  [com.revature.dao.UserDaoImpl]  
+{INFO} Feb-09-2021 Tuesday CST 08:53:21   Customer with Rounting number 2 and account number 2 had deposit -1000.0  [com.revature.dao.UserDaoImpl]  
+{INFO} Feb-09-2021 Tuesday CST 08:54:48   Customer with Rounting number 3 and account number 2 make an auto transfer 500.0 to his/her account with rounting number of 2  [com.revature.dao.UserDaoImpl]  

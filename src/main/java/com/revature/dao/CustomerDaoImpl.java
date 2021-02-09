@@ -46,7 +46,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		int account_number = 0;
 		try (Connection connection = ConnectionUtil.getConnection()){
 			String sql = "INSERT INTO customer(username, password, birthday, phone, address, zipcode, state) VALUES (?,?,?,?,?,?,?) RETURNING id";
-			
+			System.out.println("----------");
 			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
@@ -57,7 +57,6 @@ public class CustomerDaoImpl implements CustomerDao {
 			pstmt.setString(7, state);
 			
 			ResultSet rs = pstmt.executeQuery();
-			
 			if (rs.next()) {
 				account_number = rs.getInt(1);
 			}else {
