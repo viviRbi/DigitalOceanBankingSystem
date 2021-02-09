@@ -69,7 +69,7 @@ public class EmployeeMenu implements Menu{
 					case "2":
 						String rountingReject = "";
 						if (rountingReject != "quit"){
-							System.out.println("Please type the rounting number of the account you wish to approve");	
+							System.out.println("Please type the rounting number of the account you wish to reject");	
 							rountingReject = Menu.sc.nextLine();
 							switch(rountingReject){
 							case "quit":

@@ -18,5 +18,7 @@ The transaction table also had another insert trigger. It will auto update balan
 
 The UI package is where scanner was used. It is the presentaion layer. The dao - data access object performs interaction with the database while the service package become the bridge between those 2.  
 
-in the Menu interface, I make the scanner class public static to be able to access the scanner everywhere without instatiate. I also create a display and setUser function so all the class implement this inteface will use.
+In the Menu interface, I make the scanner class public static to be able to access the scanner everywhere without instatiate. There are also display and setUser abstract methods. What we see on the console was the display function of one of those class. 
+
+When user log in, the user service layer take the id and password from scanner, pass it there, and then it pass again to UserDaoImpl. UserDaoImpl then use username and passord to search from Customer and Employee table at once using the set operation. If the username and password exist, base on which table it from, a new Customer or Employee object will be instanciated, pass to the User data type in Main menu. Then if object is an instance of Customer, it will jump to the Customer Menu and immediately downcast that user data type to Customer. So we can get the customer username, birthday from the Customer Menu. The same for employee 
 

@@ -286,12 +286,14 @@ public class UserDaoImpl implements UserDao{
 	// For employee to view
 	public List<BankAccount> getAllBankAccountByCustomerId (int account_number) {
 		List<BankAccount> bank_accounts = new ArrayList<BankAccount>();
+		boolean existed = false; 
 		try (Connection connection = ConnectionUtil.getConnection()){
 			String sql = "SELECT * FROM bank_account WHERE account_number = ?";
 			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1,account_number);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
+				existed = true;
 				BankAccount bank = new BankAccount();
 				bank.setAccount_number(account_number);
 				bank.setBalance(rs.getDouble("balance"));
@@ -299,9 +301,9 @@ public class UserDaoImpl implements UserDao{
 				bank.setModifiedDate(rs.getString("modified_date"));
 				bank_accounts.add(bank);
 			}
-			
+			if (existed == false) System.out.println("\033[31;1m This account number does not exists\033[0m");
 		} catch (DatabaseConnectivityException | SQLException e){
-			System.out.println("\033[31;1mSomething went wrong. Please check all the rounting and account number\033[0m");
+			System.out.println("\033[31;1mSomething went wrong\033[0m");
 			System.out.println(e.getMessage());
 			System.out.println("---------------------------------------");
 		} 
