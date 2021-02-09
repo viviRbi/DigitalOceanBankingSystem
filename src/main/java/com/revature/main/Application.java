@@ -9,7 +9,7 @@ public class Application {
 	
 	public static void main (String args[]) {
 		Menu m = new MainMenu();
-		System.out.println("\033[31;1mWelcome to Digital Ocean Bank!\033[0m");
+		System.out.println("\033[31;1mWelcome to Digital Ocean Banking System!\033[0m");
 		System.out.println("-----------------------------------");
 		
 		m.display();

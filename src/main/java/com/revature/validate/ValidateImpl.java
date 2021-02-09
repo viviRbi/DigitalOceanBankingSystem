@@ -31,10 +31,10 @@ public class ValidateImpl implements Validate{
 	@Override
 	public String validateBirthday(String birth) {
 		String err = "";
-		String regex = "^((\\(\\d{3}\\))|\\d{2})[/]?\\d{2}[/]?\\d{4}$";
+		String regex = "^\\d{2}[/]?\\d{2}[/]?\\d{4}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(birth);
-		if (matcher.matches() == false) err+="\n \u001B[31m BIRTHDAY: Please type your phone number correctly \u001B[0m";
+		if (matcher.matches() == false) err+="\n \u001B[31m BIRTHDAY: Please type your birthday correctly \u001B[0m";
 		else {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			java.util.Date d = null;
@@ -48,7 +48,7 @@ public class ValidateImpl implements Validate{
 			LocalDate curr=LocalDate.now();
 			Period p=Period.between(birthday, curr);
 			
-			int age = p.getYears();;
+			int age = p.getYears();
 			if (age < 17) err += "\n \u001B[31m BIRTHDAY: You are not old enough to register \u001B[0m";
 			else if (age > 160) err += "\n \u001B[31m BIRTHDAY: Incorrect birthday. You cannot be " + age+" years old \u001B[0m";
 			
@@ -79,13 +79,13 @@ public class ValidateImpl implements Validate{
 	@Override
 	public String validateZipCode(String zip) { 
 		String err = "";
+		int length = zip.length();
 		try{
 			  int z = Integer.parseInt(zip);
 			} catch (NumberFormatException e) {
 			  err += "\n \u001B[31m ZIPCODE: Please enter a number for Zipcode \u001B[0m";
 			}
-		if (zip.length() != 5) {
-			System.out.println(zip.length());
+		if (length != 5) {
 			err += "\n \u001B[31m ZIPCODE: Please enter 5 digit number for Zipcode \u001B[0m";
 		}
 		return  err;
@@ -103,7 +103,7 @@ public class ValidateImpl implements Validate{
 					 "MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND",
 					 "MP","OH","OK","OR","PW","PA","PR","RI","SC","SD","TN","TX","UT",
 					 "VT","VI","VA","WA","WV","WI","WY"));
-			if (!stateArr.contains(state)) err += "\n \u001B[31m STATE: Incorrect State \u001B[0m";
+			if (!stateArr.contains(state.toUpperCase())) err += "\n \u001B[31m STATE: Incorrect State \u001B[0m";
 		}
 		return  err;
 	}
