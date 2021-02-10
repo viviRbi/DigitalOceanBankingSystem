@@ -141,7 +141,7 @@ public class CustomerMenu implements Menu{
 						int transfer_transfered_rounting_number = Integer.parseInt(Menu.sc.nextLine());
 						System.out.println("What is your receiver's account number?");
 						int transfer_transfered_account_number = Integer.parseInt(Menu.sc.nextLine());
-						System.out.println("How much do you want to deposit?");
+						System.out.println("How much do you want to transfer?");
 						amount = Double.parseDouble(Menu.sc.nextLine()) ;
 						
 						u.depositTransferWithdraw(transfer_transfer_rounting_number, my_account_number, transfer_transfered_rounting_number, transfer_transfered_account_number, amount);

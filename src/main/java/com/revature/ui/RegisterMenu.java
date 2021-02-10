@@ -18,9 +18,9 @@ public class RegisterMenu implements Menu{
 	
 	public void display() {
 		int choice= 0; 
-		String validateErr = "";
+		
 		do {
-
+			String validateErr = "";
 			System.out.println("============================================");
 			System.out.println("Please type out some of your information \n");
 			
@@ -54,8 +54,12 @@ public class RegisterMenu implements Menu{
 			
 			System.out.println("Your starting balance");
 			Double balance = Double.parseDouble(Menu.sc.nextLine());
+			
+			boolean noValidationErr = false;
+			if (validateErr.length() == 0)  noValidationErr = true; 
 
-			if (validateErr.trim() == "") {
+			if (!noValidationErr) {
+				choice = 1;
 				System.out.println(validateErr);
 			} else {
 				LocalDate birthday=LocalDate.parse(birth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
