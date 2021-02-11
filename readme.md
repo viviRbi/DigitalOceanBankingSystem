@@ -2,7 +2,7 @@
 
 About this project:
 
-1. There is 7 tables, 8 java packages and 12 test cases for register validation. This project touches all the user stories and requirements.
+1. There is 7 tables, 3 user define functions, 3 trigger functions inside the database, together with 8 java packages and 12 test cases in the IDE. This project touches all the user stories and requirements.
 
 2. About the database, the 7 tables are: customer, employee, bank account, applied bank account, transaction, pending transaction and transaction name.
 
