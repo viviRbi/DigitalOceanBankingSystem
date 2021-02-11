@@ -96,10 +96,10 @@ public class UserDaoImpl implements UserDao{
 		if (bankAccountExists == true) {
 			BankAccount account = this.getBankAccountByRountingNumber(transfered_bank_rounting, "bank_account");
 			double account_balance =account.getBalance();
-			if (amount < 0) {
+			if (amount <= 0) {
 				System.out.println("\u001B[31m---------------------------------------");
 				System.out.println("Invalid transaction");
-				System.out.println("You cannot deposit a negative amount");
+				System.out.println("You cannot deposit a negative amount or an amout of 0");
 				System.out.println("---------------------------------------\u001B[0m");
 			} else {
 				try (Connection connection = ConnectionUtil.getConnection()){
@@ -142,7 +142,7 @@ public class UserDaoImpl implements UserDao{
 				System.out.println("You cannot withdraw this much");
 				System.out.println("Your balance is only "+ account_balance);
 				System.out.println("---------------------------------------\u001B[0m");
-			} else if (amount < 0){
+			} else if (amount <= 0.0){
 				System.out.println("\u001B[31m---------------------------------------");
 				System.out.println("Invalid transaction");
 				System.out.println("You cannot withdraw a negative amount");
