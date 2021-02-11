@@ -2,7 +2,9 @@
 
 About this project:
 
-1. There is 7 tables, 3 user define functions, 3 trigger functions inside the database, together with 8 java packages and 12 test cases in the IDE. This project touches all the user stories and requirements.
+1. There is 7 tables, 3 user define functions, 3 trigger functions inside the database, together with 8 java packages and 12 test cases in the IDE. This project touches all the user stories and requirements. 
+
+Its sql file is in resources/ sql folder, near log4j.properties The posgres RDBMS must sets the Schema this script belong to as the default schema so the code to interact with it.  
 
 2. About the database, the 7 tables are: customer, employee, bank account, applied bank account, transaction, pending transaction and transaction name.
 
