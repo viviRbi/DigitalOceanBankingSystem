@@ -7,7 +7,7 @@ import com.revature.models.Customer;
 import com.revature.models.User;
 
 // Customer and employee can all use these method
-public class UserService {
+public class UserService implements UserServiceInterface{
 	private User user;
 	private UserDao u;
 	

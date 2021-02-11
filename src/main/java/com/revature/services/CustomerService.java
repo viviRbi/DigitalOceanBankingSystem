@@ -11,7 +11,7 @@ import com.revature.models.Transaction;
 import com.revature.ui.Menu;
 
 
-public class CustomerService extends UserService{
+public class CustomerService extends UserService implements CustomerServiceInterface{
 	private CustomerDao c;
 	
 	public CustomerService() {
