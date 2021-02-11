@@ -145,7 +145,7 @@ public class UserDaoImpl implements UserDao{
 			} else if (amount <= 0.0){
 				System.out.println("\u001B[31m---------------------------------------");
 				System.out.println("Invalid transaction");
-				System.out.println("You cannot withdraw a negative amount");
+				System.out.println("You cannot withdraw a negative or 0 amount");
 				System.out.println("---------------------------------------\u001B[0m");
 			} else {
 				try (Connection connection = ConnectionUtil.getConnection()){
@@ -200,7 +200,7 @@ public class UserDaoImpl implements UserDao{
 				} else if (amount <= 0){
 					System.out.println("\u001B[31m---------------------------------------");
 					System.out.println("Invalid transaction");
-					System.out.println("You cannot transfer a negative or null amount");
+					System.out.println("You cannot transfer a negative or 0 amount");
 					System.out.println("---------------------------------------\u001B[0m");
 				} else {
 					try (Connection connection = ConnectionUtil.getConnection()){
